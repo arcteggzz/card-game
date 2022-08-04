@@ -1,5 +1,5 @@
 <template>
-  <main class="flex flex-col justify-center items-center py-8 space-y-8">
+  <main class="flex flex-col justify-center items-center py-8 space-y-8 h-[30vh]">
     <h1 class="text-[2.25rem] font-[700] text-[#101828] leading-[60px]">Vue Card Game</h1>
     <p class="text-[1.25rem] font-[400] text-[#667085] leading-[30px]">Match all cards in record time to win.</p>
     <section class="flex space-x-6">
