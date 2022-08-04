@@ -1,14 +1,14 @@
 <template>
-  <div class="text-3xl font-bold underline">
-    Tega
+  <div class="">
+    <Controls />
   </div>
 </template>
 
 <script>
-
+import Controls from "./components/Controls.vue"
 export default {
   name: 'App',
-  components: {}
+  components: { Controls }
 }
 </script>
 
