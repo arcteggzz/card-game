@@ -1,7 +1,7 @@
 <template>
   <div class="">
-    <Controls />
-    <Game />
+    <Controls @setGameState="setGameState"/>
+    <Game v-if="isPlaying" />
   </div>
 </template>
 
@@ -11,7 +11,17 @@ import Game from "./components/Game.vue"
 
 export default {
   name: 'App',
-  components: { Controls, Game }
+  components: { Controls, Game },
+  data() {
+    return {
+      isPlaying: false
+    }
+  },
+  methods: {
+    setGameState(gameActive) {
+      this.isPlaying = gameActive
+    }
+  }
 }
 </script>
 
