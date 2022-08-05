@@ -1,26 +1,5 @@
-<template>
-    <section class="flex justify-center items-center h-[70vh]">
-        <div
-            class="grid grid-cols-8 gap-x-[2rem] gap-y-[2rem] py-[4rem]">
-            <div v-for="(card, index) in cards" v-bind:key="index">
-                <GameCard
-                    v-bind:id ="card.id"
-                    v-bind:cardName ="card.cardName"
-                />
-            </div>
-        </div>
-    </section>
-</template>
-
-<script>
-import GameCard from "./GameCard.vue"
-
-export default {
-  name: 'Controls',
-  components: { GameCard },
-  data(){
-        return {
-            cards : [{
+[
+    {
         id: 1,
         cardOpen: false,
         pairFound: false,
@@ -67,11 +46,5 @@ export default {
         cardOpen: false,
         pairFound: false,
         cardName: "Neymar",
-    },]
-        }
     },
-}
-</script>
-
-<style>
-</style>
+]
