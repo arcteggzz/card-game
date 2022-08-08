@@ -6,6 +6,10 @@
                 <GameCard
                     v-bind:id ="card.id"
                     v-bind:cardName ="card.cardName"
+                    v-bind:pairFound ="card.pairFound"
+                    v-bind:cardOpen ="card.cardOpen"
+                    v-bind:oneCardOpen="oneCardOpen"
+                    @setIdState="setIdState"
                 />
             </div>
         </div>
@@ -16,9 +20,9 @@
 import GameCard from "./GameCard.vue"
 
 export default {
-  name: 'Controls',
-  components: { GameCard },
-  data(){
+    name: 'Controls',
+    components: { GameCard },
+    data(){
         return {
             cards : [{
         id: 1,
@@ -67,9 +71,28 @@ export default {
         cardOpen: false,
         pairFound: false,
         cardName: "Neymar",
-    },]
+    },
+    ],
+            cardA: "",
+            cardB: "",
+            oneCardOpen: false
         }
     },
+    methods: {
+        setIdState(id){
+            console.log(id)
+            this.cards.map((card) => {
+                if (card.id === id) {
+                    console.log("fired");
+                    return {
+                        ...card, cardOpen: true
+                    }
+                }
+                return card
+            })
+        }
+    }
+
 }
 </script>
 

@@ -20,26 +20,25 @@ export default {
     components: {},
     data() {
         return {
-            cardOpen: false,
-            pairFound: false,
-            currentOpenCard: ""
         }
     },
     props: {
         id: {
             type: Number,
         },
+        cardOpen: {
+            type: Boolean
+        },
         cardName: {
             type: String,
+        },
+        pairFound: {
+            type: Boolean
         }
     },
     methods: {
         flipCard() {
-            this.cardOpen = !this.cardOpen
-            if (this.cardOpen){
-                this.currentOpenCard += this.cardName
-                console.log(this.currentOpenCard)
-            }
+            this.$emit('setIdState', this.id)
         }
     }
 }
