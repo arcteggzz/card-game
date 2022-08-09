@@ -8,7 +8,8 @@
             <button :class="buttonStyle" @click="endGame">End</button>
         </div>
         <div class="flex space-x-6">
-            <h2 :class="infoStyle">Moves: 12</h2>
+            <h2 :class="infoStyle">Moves: {{ moveCounter }}</h2>
+            <h2 :class="infoStyle">PairsFound: {{ pairsFound }}</h2>
             <h2 :class="infoStyle">Time: {{ timeSpentText }}</h2>
         </div>
     </section>
@@ -16,6 +17,7 @@
 </template>
 
 <script>
+import { eventBus } from "../main";
 
 export default {
   name: 'Controls',
@@ -26,7 +28,9 @@ export default {
         infoStyle: `text-[1.2rem] font-[500] text-[#6941C6] leading-[1.5rem] py-[1rem] w-[10rem] bg-[#F9F5FF] rounded-[1rem] text-center`,
         gameActive: false,
         timeSpentNum: 0,
-        timeSpentText: `00:00`
+        timeSpentText: `00:00`,
+        pairsFound: 0,
+        moveCounter: 0
     }
   },
   methods: {
@@ -53,6 +57,18 @@ export default {
       this.$emit('setGameState', this.gameActive)
     }
   },
+  created() {
+    eventBus.$on("updatePairsFoundCount", () => {
+      this.pairsFound++
+      eventBus.$emit("pairCounterUpdated", this.pairsFound)
+    }),
+    eventBus.$on("updateMoveCounter", () => {
+      this.moveCounter++
+    })
+    eventBus.$on("gameOver", () => {
+      this.gameActive = false
+    })
+  }
 }
 </script>
 
